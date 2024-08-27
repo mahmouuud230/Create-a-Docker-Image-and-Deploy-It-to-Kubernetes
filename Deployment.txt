@@ -1,0 +1,17 @@
+apiVersion: apps/v1 # this is the name of the library that K8s woll use to create deployment object
+kind: Deployment
+metadata:
+ name: myproject-deploy
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   app: webserver
+ template: # this pod template using which replicas will be created
+  metadata:
+   labels:  # every replica/pod will have a unique name given by K8s
+    app: webserver
+  spec:
+   containers:
+    - name: c1
+      image: mahmouuud/kuber_project_redis
